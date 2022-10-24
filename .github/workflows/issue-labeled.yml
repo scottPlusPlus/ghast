@@ -12,9 +12,9 @@ jobs:
       issues: write
     steps:
     - name: Deploy Stage
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: 'https://fathomless-sands-89325.herokuapp.com/push'
-          method: 'POST'
-          customHeaders: '{"Content-Type": "application/json"}'
-          data: '{"issue_num": "${{ github.event.issue.number }}", "foo": "bar"}'
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://fathomless-sands-89325.herokuapp.com/push'
+        method: 'POST'
+        customHeaders: '{"Content-Type": "application/json"}'
+        data: '{"issue_num": "${{ github.event.issue.number }}", "foo": "bar"}'
