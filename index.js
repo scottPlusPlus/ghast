@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 5000
 const data = [];
 
 const receiveData = (req, res)=> {
+  console.log("receive data...");
   data.push(req.body);
   res.status('200').json();
 }
