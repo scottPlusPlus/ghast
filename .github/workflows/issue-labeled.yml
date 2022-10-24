@@ -11,9 +11,10 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Add comment
-        uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
+    - name: Deploy Stage
+        uses: fjogeleit/http-request-action@v1
         with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Just a test!
+          url: 'https://fathomless-sands-89325.herokuapp.com/push'
+          method: 'POST'
+          customHeaders: '{"Content-Type": "application/json"}'
+          data: '{"issue_num": "${{ github.event.issue.number }}", "foo": "bar"}'
