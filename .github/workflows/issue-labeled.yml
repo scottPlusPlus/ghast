@@ -17,4 +17,4 @@ jobs:
         url: 'https://fathomless-sands-89325.herokuapp.com/push'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json"}'
-        data: '{"issue_num": "${{ github.event.issue.number }}", "foo": "bar"}'
+        data: '{"issue_num": "${{ github.event.issue.number }}", "body": "${{ github.event.issue.body }}"}'
