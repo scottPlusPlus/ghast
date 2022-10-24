@@ -1,4 +1,5 @@
 const express = require('express')
+var bodyParser = require('body-parser')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
@@ -18,6 +19,7 @@ const showData = (req, res)=> {
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
+  .use(bodyParser.json())
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .use((req, res, next) => {
@@ -39,3 +41,5 @@ express()
   .get('/show', showData)
   .post('/push', receiveData)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
