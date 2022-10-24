@@ -20,9 +20,18 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
+  .use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://www.domainA.com');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+    next();
+  })
   .options('*', (req, res) => {
     console.log("handling options...");
-    res.json({
+    res.status(200).json({
       status: 'OK'
     });
   })  
