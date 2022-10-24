@@ -6,7 +6,9 @@ const data = [];
 
 const receiveData = (req, res)=> {
   console.log("receive data...");
+  console.log(JSON.stringify(req.body));
   data.push(req.body);
+  console.log("saved data...");
   res.status('200').json();
 }
 
