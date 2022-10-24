@@ -21,6 +21,7 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .options('*', (req, res) => {
+    console.log("handling options...");
     res.json({
       status: 'OK'
     });
