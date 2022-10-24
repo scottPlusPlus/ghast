@@ -20,6 +20,11 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
+  .options('*', (req, res) => {
+    res.json({
+      status: 'OK'
+    });
+  })  
   .get('/', (req, res) => res.render('pages/index'))
   .get('/show', showData)
   .post('/push', receiveData)
