@@ -5,16 +5,9 @@ on:
     types:
       - labeled
 jobs:
-  add-comment:
-    if: github.event.label.name == 'approved'
+  run-updater:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
-    - name: Deploy Stage
-      uses: fjogeleit/http-request-action@v1
-      with:
-        url: 'https://fathomless-sands-89325.herokuapp.com/push'
-        method: 'POST'
-        customHeaders: '{"Content-Type": "application/json"}'
-        data: '{"issue_num": "${{ github.event.issue.number }}", "body": "${{ github.event.issue.body }}"}'
+    - name: REST API with curl
+      run: |
+        curl -X POST -H "Content-Type: application/json" -d '{"issue_num": "${{ github.event.issue.number }}", "body": "${{ github.event.issue.body }}"}' https://fathomless-sands-89325.herokuapp.com/push

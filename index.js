@@ -4,7 +4,6 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const data = [];
-const logs = [];
 
 const receiveData = (req, res)=> {
   console.log("receive data...");
@@ -28,7 +27,7 @@ const clear = (req, res)=> {
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
-  .use(bodyParser.json())
+  .use(bodyParser.json({ limit: '50mb', extended: true }))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .use((req, res, next) => {
