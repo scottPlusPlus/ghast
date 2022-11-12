@@ -4,6 +4,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const data = [];
+const logs = [];
 
 const receiveData = (req, res)=> {
   console.log("receive data...");
@@ -14,8 +15,16 @@ const receiveData = (req, res)=> {
 }
 
 const showData = (req, res)=> {
+  console.log("show data");
   res.status('200').json(data);
 }
+
+const clear = (req, res)=> {
+  console.log("clear data");
+  data = [];
+  res.status('200').json(data);
+}
+
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -39,6 +48,7 @@ express()
   })  
   .get('/', (req, res) => res.render('pages/index'))
   .get('/show', showData)
+  .get('/clear', clear)
   .post('/push', receiveData)
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
