@@ -1,39 +1,12 @@
-# node-js-getting-started
+# Github Action Proof of Concept
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+Proof of concept for a github action running on an issue label.
 
-This application supports the [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+* Open this webapp hanging out in a heroku container:
+  * https://fathomless-sands-89325.herokuapp.com
+  * (falls asleep every five minutes or so.  this will NOT WORK after Nov 28 with Heroku kills its free tier)
 
-## Running Locally
-
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
-
-```sh
-$ git clone https://github.com/heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```
-$ heroku create
-$ git push heroku main
-$ heroku open
-```
-or
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-## Documentation
-
-For more information about using Node.js on Heroku, see these Dev Center articles:
-
-- [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+* Create a new issue in this repo
+* Label the issue as "approved"
+* wait ~60 seconds
+* check out https://fathomless-sands-89325.herokuapp.com/show to see all the data sent from the Github Action to the webserver.
