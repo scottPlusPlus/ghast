@@ -5,7 +5,8 @@ on:
     types:
       - labeled
 jobs:
-  run-updater:
+  submit-project:
+  if: github.event.label.name == 'approved'
     runs-on: ubuntu-latest
     steps:
     - name: REST API with curl
