@@ -7,8 +7,8 @@ on:
 jobs:
   submit-project:
   if: github.event.label.name == 'approved'
-    runs-on: ubuntu-latest
-    steps:
-    - name: REST API with curl
-      run: |
-        curl -X POST -H "Content-Type: application/json" -d '{"issue_num": "${{ github.event.issue.number }}", "body": "${{ github.event.issue.body }}"}' https://fathomless-sands-89325.herokuapp.com/push
+  runs-on: ubuntu-latest
+  steps:
+  - name: REST API with curl
+    run: |
+      curl -X POST -H "Content-Type: application/json" -d '{"issue_num": "${{ github.event.issue.number }}", "body": "${{ github.event.issue.body }}"}' https://fathomless-sands-89325.herokuapp.com/push
